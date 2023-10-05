@@ -1,0 +1,101 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Website menu 07</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<!-- <h2 class="heading-section">Index</h2> -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid px-md-5">
+			<div class="row justify-content-between">
+				<div class="col-md-8 order-md-last">
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<a class="navbar-brand" href="index.html">Task Tracker</a>
+						</div>
+						<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+							<form action="#" class="searchform order-lg-last">
+			          
+			        </form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 d-flex">
+					<div class="social-media">
+		    			
+	        </div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid">
+	    
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+	        	<li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+	        	<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Page</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/addTaskForm/">Add Task</a>
+                <a class="dropdown-item" href="/viewTask/">View Task</a>
+                <a class="dropdown-item" href="/updateTask1/">Edit</a>
+              </div>
+            </li>
+	        	<li class="nav-item"><a href="viewTask" class="nav-link">Tasks</a></li>
+	          <li class="nav-item"><a href="/" class="nav-link">LOGOUT</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+	</section>
+<form action="/addTask1/ " method="post">
+    {% csrf_token %} 
+	<input type="text" name="id" value="{{ x.id }}" placeholder="Enter your title" hidden><br><br>
+
+    <label>Title</label>
+    <input type="text" name="title" value="{{ x.title }}" placeholder="Enter your title"><br><br>
+    <label>Description</label>
+    <textarea name="dec" rows="5" cols="45">{{ x.description }}</textarea><br><br>
+	<label>completed Status</label>
+	<select name="sts">
+		{% if x.completed == 1 %}
+				<option selected>completed </option>
+		{% else %}
+		<option selected> Not completed </option>
+		{% endif %}
+		<option value="True">Compleated</option>
+		<option value="False">Pending</option>
+	</select><br><br>
+    <input type="submit" value="Update" class="btn btn-primary">
+	<a href="/delTask/{{x.id}}" class="btn btn-danger">Delete</a>
+</form>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>
+
